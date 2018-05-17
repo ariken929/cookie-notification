@@ -1,0 +1,22 @@
+#cookie-notification {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f58323;
+    z-index: 999999;
+}
+
+#cookie-notification .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #fff;
+}
+
+#cookie-notification .cookie-notice {
+    width: 80%;
+    min-width: 400px;
+    margin: auto;
+    padding: 50px 0;
+    color: #fff;
+}

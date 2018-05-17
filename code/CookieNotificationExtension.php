@@ -8,6 +8,13 @@
  */
 class CookieNotificationExtension extends Extension
 {
+    private static $url_handlers = array(
+        'accept' => 'accept'
+    );
+    private static $allowed_actions = array(
+        'accept'
+    );
+
     public function onAfterInit()
     {
         Requirements::css('cookie-notification/css/main.css');
@@ -19,13 +26,12 @@ class CookieNotificationExtension extends Extension
         $config = SiteConfig::current_site_config();
         if ($config->CookieNotice) {
             $notice = $config->dbObject('CookieNotice');
-            $html = $this->owner->customise(array('CookieNotice' => $notice))->renderWith('CookieNotice');
 
             if ($this->owner->getRequest()->isAjax()) {
-                return $this->jsonResponse(array('HTML' => $html->forTemplate()));
+                return $this->jsonResponse(array('HTML' => $this->owner->customise(array('CookieNotice' => $notice))->renderWith('CookieNotice')->forTemplate()));
             }
 
-            return $html;
+            return $notice;
         }
     }
 
@@ -35,12 +41,7 @@ class CookieNotificationExtension extends Extension
         $this->InjectScripts();
     }
 
-    public function decline()
-    {
-        Session::clear('cookie-gdpr-accepted');
-    }
-
-    public function cookiesAccepted()
+    public function CookiesAccepted()
     {
         return Session::get('cookie-gdpr-accepted');
     }
