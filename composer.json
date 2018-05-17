@@ -1,0 +1,22 @@
+{
+	"name" : "ariken929/cookie-notification",
+	"description" : "A module that adds a notice to a page when first loaded",
+	"license" : "BSD-2-Clause",
+	"type" : "silverstripe-module",
+	"keywords" : ["GDPR","cookie","notification"],
+	"require" : {
+		"silverstripe/framework": "^3.1"
+	},
+	"authors": [
+		{
+			"name": "Carey Liu",
+			"email": "carey@webtorque.co.nz"
+		}
+	],
+	"require-dev": {
+		"phpunit/PHPUnit": "~3.7"
+	},
+	"extra" : {
+		"installer-name": "cookie-notification"
+    }
+}
