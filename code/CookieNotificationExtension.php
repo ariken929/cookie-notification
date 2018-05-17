@@ -50,7 +50,7 @@ class CookieNotificationExtension extends Extension
     {
         $config = SiteConfig::current_site_config();
         if ($this->cookiesAccepted()) {
-            Requirements::insertHeadTags($config->ThirdPartyScripts);
+            Requirements::insertHeadTags($config->ThirdPartyHeadScripts);
         }
     }
 
