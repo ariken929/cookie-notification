@@ -10,6 +10,12 @@ Notice will be displayed on first load each session. Third-party script are inje
 
 When including third-party scripts in the page head, surround it with an if statement checking for $cookiesAccepted
 
-    <% if $cookiesAccepted %>
-        $SiteConfig.ThridPartyScripts.RAW    
+    <% if $CookiesAccepted %>
+        $SiteConfig.ThridPartyHeadScripts.RAW    
+    <% end_if %>
+    
+please the notice banner where you see fit
+
+    <% if not $CookiesAccepted %>
+        <% include CookieNotice %>
     <% end_if %>
