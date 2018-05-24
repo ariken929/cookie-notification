@@ -1,6 +1,3 @@
 Page_Controller:
   extensions:
     - CookieNotificationExtension
-SiteConfig:
-  extensions:
-    - CookieNotificationSiteConfig

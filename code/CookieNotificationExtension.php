@@ -11,6 +11,7 @@ class CookieNotificationExtension extends Extension
     private static $url_handlers = array(
         'accept' => 'accept'
     );
+
     private static $allowed_actions = array(
         'accept'
     );
@@ -23,42 +24,61 @@ class CookieNotificationExtension extends Extension
 
     public function CookieNotice()
     {
-        $config = SiteConfig::current_site_config();
+        $config = CookieNotificationConfig::current_config();
         if ($config->CookieNotice) {
-            $notice = $config->dbObject('CookieNotice');
-
-            if ($this->owner->getRequest()->isAjax()) {
-                return $this->jsonResponse(array('HTML' => $this->owner->customise(array('CookieNotice' => $notice))->renderWith('CookieNotice')->forTemplate()));
-            }
-
-            return $notice;
+            return $config->dbObject('CookieNotice');
         }
     }
 
-    public function accept()
+    public function PrivacyPolicy()
     {
-        Session::set('cookie-gdpr-accepted', true);
+        $config = CookieNotificationConfig::current_config();
+        if ($config->PrivacyPolicy) {
+            return $config->dbObject('PrivacyPolicy');
+        }
+    }
+
+    public function ThirdPartyScripts()
+    {
+        $config = CookieNotificationConfig::current_config();
+        if ($config->ThirdPartyScripts) {
+            return $config->dbObject('ThirdPartyScripts')->raw();
+        }
+    }
+
+    public function acceptAll()
+    {
+        Session::set('cookie-all-accepted', true);
         $this->InjectScripts();
     }
 
-    public function CookiesAccepted()
+    public function acceptEssential()
     {
-        return Session::get('cookie-gdpr-accepted');
+        Session::set('cookie-essential-accepted', true);
+    }
+
+    public function AllAccepted()
+    {
+        return Session::get('cookie-all-accepted');
+    }
+
+    public function EssentialAccepted()
+    {
+        return Session::get('cookie-essential-accepted');
+    }
+
+    public function EssentialCookies(){
+        return CookieNotificationConfig::current_config()->Cookies()->filter(array('Type' => 'Essential'))->sort('SortOrder');
+    }
+
+    public function OptionalCookies(){
+        return CookieNotificationConfig::current_config()->Cookies()->filter(array('Type' => 'Optional'))->sort('SortOrder');
     }
 
     public function InjectScripts()
     {
-        $config = SiteConfig::current_site_config();
-        if ($this->cookiesAccepted()) {
-            Requirements::insertHeadTags($config->ThirdPartyHeadScripts);
+        if ($this->AllAccepted()) {
+            Requirements::insertHeadTags($this->ThirdPartyScripts());
         }
-    }
-
-    public function jsonResponse($array)
-    {
-        $response = new SS_HTTPResponse(Convert::raw2json($array));
-        $response->addHeader('Content-Type', 'application/json');
-
-        return $response;
     }
 }

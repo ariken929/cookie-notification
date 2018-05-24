@@ -1,9 +1,12 @@
+/*base styles*/
 #cookie-notification {
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #f58323;
     z-index: 999999;
+    min-height: 600px;
+    transition: min-height 0.5s;
 }
 
 #cookie-notification .close {
@@ -17,6 +20,41 @@
     width: 80%;
     min-width: 400px;
     margin: auto;
-    padding: 50px 0;
+    padding: 40px 0 100px;
     color: #fff;
+}
+
+#cookie-notification .cookie-options {
+    display: none;
+}
+
+#cookie-notification.compact {
+    min-height: 300px;
+}
+
+#cookie-notification.compact .button.accept-essential{
+    display: none;
+}
+
+/*button styles*/
+#cookie-notification .actions {
+    width: 600px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#cookie-notification .actions .button {
+    color: #fff;
+    margin: 0px 5px 40px;
+}
+
+#cookie-notification .actions .button:after {
+    background-color: #fff;
+}
+
+#cookie-notification .actions .button:hover a {
+    color: #f58323;
 }

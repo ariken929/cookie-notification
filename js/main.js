@@ -1,11 +1,42 @@
 $(document).ready(function () {
-    $("#cookie-notification .accept").click(function (e) {
+    $("#cookie-notification .accept-all").click(function (e) {
         e.preventDefault();
-        var notice = $('#cookie-notification');
-        var url = notice.data('accept');
+        var notification = $('#cookie-notification');
+        var url = notification.data('accept');
 
         $.get(url, function (data) {
-            notice.hide();
+            notification.hide();
         });
+    });
+
+    $("#cookie-notification .accept-essential").click(function (e) {
+        e.preventDefault();
+        var notification = $('#cookie-notification');
+        var url = notification.data('essential');
+
+        $.get(url, function (data) {
+            notification.hide();
+        });
+    });
+
+    $("#cookie-notification .options").click(function (e) {
+        e.preventDefault();
+        var notification = $('#cookie-notification'),
+            notice = notification.find('.cookie-notice'),
+            options = notification.find('.cookie-options');
+
+        if (notification.hasClass('compact')) {
+            notification.removeClass('compact');
+            notice.fadeOut(500, function () {
+                options.fadeIn(500);
+            });
+
+        }
+        else {
+            notification.addClass('compact');
+            options.fadeOut(500, function () {
+                notice.fadeIn(500);
+            });
+        }
     });
 });
