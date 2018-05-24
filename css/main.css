@@ -16,9 +16,9 @@
     color: #fff;
 }
 
-#cookie-notification .cookie-notice {
+#cookie-notification .cookie-notice, #cookie-notification .cookie-options {
     width: 80%;
-    min-width: 400px;
+    min-width: 200px;
     margin: auto;
     padding: 40px 0 100px;
     color: #fff;
@@ -28,12 +28,49 @@
     display: none;
 }
 
+#cookie-notification .cookie-options .cookie-table {
+    display: none;
+}
+
+#cookie-notification .cookie-options .cookie-table.selected {
+    display: block;
+}
+
 #cookie-notification.compact {
     min-height: 300px;
 }
 
-#cookie-notification.compact .button.accept-essential{
+#cookie-notification.compact .button.accept-essential {
     display: none;
+}
+
+#cookie-notification .cookie-types-selector {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#cookie-notification .cookie-types-selector .cookie-type {
+    display: inline-block;
+    width: 220px;
+    cursor: pointer;
+}
+
+#cookie-notification .cookie-types-selector .cookie-type.selected {
+    color: #f58323;
+    background-color: #fff;
+    border-radius: 3px 3px 0 0;
+    padding: 5px 10px;
+}
+
+/*table*/
+#cookie-notification .cookie-table table {
+    width: 445px;
+    margin: auto;
+    border: 2px solid #fff;
+}
+
+#cookie-notification .cookie-table table th {
+    padding: 10px 20px;
 }
 
 /*button styles*/
@@ -57,4 +94,16 @@
 
 #cookie-notification .actions .button:hover a {
     color: #f58323;
+}
+
+#cookie-notification .actions .options {
+    display: none;
+}
+
+#cookie-notification.compact .actions .options {
+    display: inline-block;
+}
+
+#cookie-notification .close {
+    cursor: pointer;
 }

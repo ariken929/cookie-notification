@@ -19,6 +19,16 @@ $(document).ready(function () {
         });
     });
 
+    $("#cookie-notification .close").click(function (e) {
+        e.preventDefault();
+        var notification = $('#cookie-notification');
+        var url = notification.data('essential');
+
+        $.get(url, function (data) {
+            notification.hide();
+        });
+    });
+
     $("#cookie-notification .options").click(function (e) {
         e.preventDefault();
         var notification = $('#cookie-notification'),
@@ -30,13 +40,22 @@ $(document).ready(function () {
             notice.fadeOut(500, function () {
                 options.fadeIn(500);
             });
-
         }
         else {
             notification.addClass('compact');
-            options.fadeOut(500, function () {
+            options.fadeOut(50, function () {
                 notice.fadeIn(500);
             });
         }
+    });
+
+    $("#cookie-notification .cookie-type").click(function (e) {
+        e.preventDefault();
+        $('.cookie-type').removeClass('selected');
+        $('.cookie-table').removeClass('selected');
+        var selected = $(e.target).closest('.cookie-type'),
+            toggle = selected.data('toggle');
+        selected.addClass('selected');
+        $('.cookie-table.' + toggle).addClass('selected');
     });
 });

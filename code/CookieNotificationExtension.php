@@ -9,11 +9,13 @@
 class CookieNotificationExtension extends Extension
 {
     private static $url_handlers = array(
-        'accept' => 'accept'
+        'acceptAll' => 'acceptAll',
+        'acceptEssential' => 'acceptEssential',
     );
 
     private static $allowed_actions = array(
-        'accept'
+        'acceptAll',
+        'acceptEssential'
     );
 
     public function onAfterInit()
@@ -38,11 +40,19 @@ class CookieNotificationExtension extends Extension
         }
     }
 
-    public function ThirdPartyScripts()
+    public function ThirdPartyHeadScripts()
     {
         $config = CookieNotificationConfig::current_config();
-        if ($config->ThirdPartyScripts) {
-            return $config->dbObject('ThirdPartyScripts')->raw();
+        if ($config->ThirdPartyHeadScripts) {
+            return $config->dbObject('ThirdPartyHeadScripts')->raw();
+        }
+    }
+
+    public function ThirdPartyBodyScripts()
+    {
+        $config = CookieNotificationConfig::current_config();
+        if ($config->ThirdPartyBodyScripts) {
+            return $config->dbObject('ThirdPartyBodyScripts')->raw();
         }
     }
 
@@ -67,11 +77,13 @@ class CookieNotificationExtension extends Extension
         return Session::get('cookie-essential-accepted');
     }
 
-    public function EssentialCookies(){
+    public function EssentialCookies()
+    {
         return CookieNotificationConfig::current_config()->Cookies()->filter(array('Type' => 'Essential'))->sort('SortOrder');
     }
 
-    public function OptionalCookies(){
+    public function OptionalCookies()
+    {
         return CookieNotificationConfig::current_config()->Cookies()->filter(array('Type' => 'Optional'))->sort('SortOrder');
     }
 

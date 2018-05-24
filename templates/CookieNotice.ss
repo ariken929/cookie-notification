@@ -5,7 +5,11 @@
         <div class="cookie-policy">
             $PrivacyPolicy
         </div>
-        <div class="essential">
+        <div class="cookie-types-selector">
+            <div class="cookie-type selected" data-toggle="essential">Essential Cookies</div>
+            <div class="cookie-type" data-toggle="optional">Optional Cookies</div>
+        </div>
+        <div class="cookie-table essential selected">
             <table>
                 <% loop $EssentialCookies %>
                     <tr>
@@ -16,7 +20,7 @@
             </table>
         </div>
         <% if $OptionalCookies %>
-            <div class="optional">
+            <div class="cookie-table optional">
                 <table>
                     <% loop $OptionalCookies %>
                         <tr>

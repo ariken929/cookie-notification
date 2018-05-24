@@ -11,7 +11,8 @@ class CookieNotificationConfig extends DataObject implements PermissionProvider
     private static $db = array(
         'CookieNotice' => 'HTMLText',
         'PrivacyPolicy' => 'HTMLText',
-        'ThirdPartyScripts' => 'Text'
+        'ThirdPartyHeadScripts' => 'Text',
+        'ThirdPartyBodyScripts' => 'Text',
     );
 
     private static $many_many = array(
@@ -31,8 +32,10 @@ class CookieNotificationConfig extends DataObject implements PermissionProvider
                 new Tab('GDPR',
                     HtmlEditorField::create('CookieNotice', 'Cookie Notice'),
                     HtmlEditorField::create('PrivacyPolicy', 'Privacy Policy'),
-                    TextareaField::create('ThirdPartyScripts', 'Third Party Scripts')->setRows(30)
+                    TextareaField::create('ThirdPartyHeadScripts', 'Third Party Head Scripts')->setRows(20)
                         ->setDescription('paste any third-party scripts that you would like to place in the page head.'),
+                    TextareaField::create('ThirdPartyBodyScripts', 'Third Party Body Scripts')->setRows(20)
+                        ->setDescription('paste any third-party scripts that you would like to place in the page body.'),
                     GridField::create('Cookies', 'Cookies', $this->Cookies(),
                         GridFieldConfig_RelationEditor::create()->addComponent(GridFieldOrderableRows::create('SortOrder')))
                 )
