@@ -9,7 +9,7 @@
 class CookieNotificationSetting extends SiteConfigLeftAndMain
 {
     private static $url_segment = 'cookie-notification-settings';
-    private static $menu_title = 'Cookie Notice';
+    private static $menu_title = 'GDPR';
     private static $tree_class = 'CookieNotificationConfig';
 
     public function getEditForm($id = null, $fields = null)

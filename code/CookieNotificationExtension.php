@@ -40,6 +40,22 @@ class CookieNotificationExtension extends Extension
         }
     }
 
+    public function EssentialNotice()
+    {
+        $config = CookieNotificationConfig::current_config();
+        if ($config->EssentialNotice) {
+            return $config->dbObject('EssentialNotice');
+        }
+    }
+
+    public function OptionalNotice()
+    {
+        $config = CookieNotificationConfig::current_config();
+        if ($config->OptionalNotice) {
+            return $config->dbObject('OptionalNotice');
+        }
+    }
+
     public function ThirdPartyHeadScripts()
     {
         $config = CookieNotificationConfig::current_config();

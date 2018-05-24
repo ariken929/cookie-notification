@@ -5,72 +5,75 @@
     width: 100%;
     background-color: #f58323;
     z-index: 999999;
-    min-height: 600px;
+    min-height: 500px;
     transition: min-height 0.5s;
 }
 
-#cookie-notification .close {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    color: #fff;
-}
-
-#cookie-notification .cookie-notice, #cookie-notification .cookie-options {
-    width: 80%;
-    min-width: 200px;
-    margin: auto;
-    padding: 40px 0 100px;
-    color: #fff;
-}
-
-#cookie-notification .cookie-options {
-    display: none;
-}
-
-#cookie-notification .cookie-options .cookie-table {
-    display: none;
-}
-
-#cookie-notification .cookie-options .cookie-table.selected {
-    display: block;
+#cookie-notification .fas{
+    margin-right: 10px;
 }
 
 #cookie-notification.compact {
     min-height: 300px;
 }
 
-#cookie-notification.compact .button.accept-essential {
+#cookie-notification .cookie-notice {
+    width: 80%;
+    min-width: 300px;
+    margin: auto;
+    padding: 40px 0 100px;
+    color: #fff;
+}
+
+/*cookie options styles*/
+#cookie-notification .cookie-options {
+    width: 60%;
+    min-width: 300px;
+    margin: auto;
+    padding: 40px 0 100px;
+    color: #fff;
+    position: relative;
     display: none;
 }
 
-#cookie-notification .cookie-types-selector {
-    text-align: center;
-    margin-top: 40px;
-}
-
-#cookie-notification .cookie-types-selector .cookie-type {
+#cookie-notification .options-nav {
     display: inline-block;
-    width: 220px;
-    cursor: pointer;
+    width: 20%;
+    vertical-align: top;
 }
 
-#cookie-notification .cookie-types-selector .cookie-type.selected {
+#cookie-notification .options-content {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+}
+
+#cookie-notification .nav-item {
+    display: block;
+    padding: 10px 20px;
+}
+
+#cookie-notification .nav-item.selected {
     color: #f58323;
     background-color: #fff;
-    border-radius: 3px 3px 0 0;
-    padding: 5px 10px;
+    border-radius: 2px;
 }
 
-/*table*/
-#cookie-notification .cookie-table table {
-    width: 445px;
-    margin: auto;
-    border: 2px solid #fff;
+#cookie-notification .content-item {
+    display: none;
 }
 
-#cookie-notification .cookie-table table th {
-    padding: 10px 20px;
+#cookie-notification .content-item.selected {
+    display: block;
+}
+
+#cookie-notification .content-item .option-notice {
+    margin-bottom: 40px;
+}
+
+#cookie-notification .content-item .cookie-list {
+    list-style: none;
+    padding: 0;
 }
 
 /*button styles*/
@@ -96,6 +99,10 @@
     color: #f58323;
 }
 
+#cookie-notification.compact .button.accept-essential {
+    display: none;
+}
+
 #cookie-notification .actions .options {
     display: none;
 }
@@ -105,5 +112,9 @@
 }
 
 #cookie-notification .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #fff;
     cursor: pointer;
 }

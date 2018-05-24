@@ -49,13 +49,13 @@ $(document).ready(function () {
         }
     });
 
-    $("#cookie-notification .cookie-type").click(function (e) {
+    $("#cookie-notification .nav-item").click(function (e) {
         e.preventDefault();
-        $('.cookie-type').removeClass('selected');
-        $('.cookie-table').removeClass('selected');
-        var selected = $(e.target).closest('.cookie-type'),
+        $('#cookie-notification .nav-item').removeClass('selected');
+        $('#cookie-notification .content-item').removeClass('selected');
+        var selected = $(e.target).closest('.nav-item'),
             toggle = selected.data('toggle');
         selected.addClass('selected');
-        $('.cookie-table.' + toggle).addClass('selected');
+        $('.content-item.' + toggle).addClass('selected');
     });
 });

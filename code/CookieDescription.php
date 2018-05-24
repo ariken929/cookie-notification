@@ -10,13 +10,12 @@ class CookieDescription extends DataObject
 {
     private static $db = array(
         'Title' => 'Varchar(100)',
-        'Description' => 'Text',
+        'Link' => 'Varchar(500)',
         'Type' => "Enum('Essential,Optional','Essential')"
     );
 
     private static $summary_fields = array(
          'Title' => 'Title',
-         'Description' => 'Description',
          'Type' => 'Type'
     );
 }

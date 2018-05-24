@@ -11,6 +11,8 @@ class CookieNotificationConfig extends DataObject implements PermissionProvider
     private static $db = array(
         'CookieNotice' => 'HTMLText',
         'PrivacyPolicy' => 'HTMLText',
+        'EssentialNotice' => 'HTMLText',
+        'OptionalNotice' => 'HTMLText',
         'ThirdPartyHeadScripts' => 'Text',
         'ThirdPartyBodyScripts' => 'Text',
     );
@@ -29,15 +31,21 @@ class CookieNotificationConfig extends DataObject implements PermissionProvider
     {
         $fields = new FieldList(
             new TabSet("Root",
-                new Tab('GDPR',
-                    HtmlEditorField::create('CookieNotice', 'Cookie Notice'),
-                    HtmlEditorField::create('PrivacyPolicy', 'Privacy Policy'),
+                new Tab('Notices',
+                    HtmlEditorField::create('CookieNotice', 'Cookie Notice')->setRows(10),
+                    HtmlEditorField::create('PrivacyPolicy', 'Privacy Policy')->setRows(10),
+                    HtmlEditorField::create('EssentialNotice', 'Essential Notice')->setRows(10),
+                    HtmlEditorField::create('OptionalNotice', 'Optional Notice')->setRows(10)
+                ),
+                new Tab('Cookies',
+                    GridField::create('Cookies', 'Cookies', $this->Cookies(),
+                        GridFieldConfig_RelationEditor::create()->addComponent(GridFieldOrderableRows::create('SortOrder')))
+                ),
+                new Tab('Scripts',
                     TextareaField::create('ThirdPartyHeadScripts', 'Third Party Head Scripts')->setRows(20)
                         ->setDescription('paste any third-party scripts that you would like to place in the page head.'),
                     TextareaField::create('ThirdPartyBodyScripts', 'Third Party Body Scripts')->setRows(20)
-                        ->setDescription('paste any third-party scripts that you would like to place in the page body.'),
-                    GridField::create('Cookies', 'Cookies', $this->Cookies(),
-                        GridFieldConfig_RelationEditor::create()->addComponent(GridFieldOrderableRows::create('SortOrder')))
+                        ->setDescription('paste any third-party scripts that you would like to place in the page body.')
                 )
             )
         );
