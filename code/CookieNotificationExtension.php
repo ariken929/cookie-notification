@@ -106,7 +106,7 @@ class CookieNotificationExtension extends Extension
     public function InjectScripts()
     {
         if ($this->AllAccepted()) {
-            Requirements::insertHeadTags($this->ThirdPartyScripts());
+            Requirements::insertHeadTags($this->ThirdPartyHeadScripts());
         }
     }
 }

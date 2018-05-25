@@ -5,6 +5,7 @@ $(document).ready(function () {
         var url = notification.data('accept');
 
         $.get(url, function (data) {
+            notification.removeClass('has-notice');
             notification.hide();
         });
     });
@@ -15,6 +16,7 @@ $(document).ready(function () {
         var url = notification.data('essential');
 
         $.get(url, function (data) {
+            notification.removeClass('has-notice');
             notification.hide();
         });
     });
@@ -25,6 +27,7 @@ $(document).ready(function () {
         var url = notification.data('accept');
 
         $.get(url, function (data) {
+            notification.removeClass('has-notice');
             notification.hide();
         });
     });
