@@ -5,11 +5,13 @@
     width: 100%;
     background-color: #f58323;
     z-index: 999999;
-    min-height: 500px;
+    min-height: 600px;
     transition: min-height 0.5s;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
-#cookie-notification .fas{
+#cookie-notification .fas {
     margin-right: 10px;
 }
 
@@ -20,17 +22,19 @@
 #cookie-notification .cookie-notice {
     width: 80%;
     min-width: 300px;
+    min-height: 200px;
     margin: auto;
-    padding: 40px 0 100px;
+    padding: 40px 0 40px;
     color: #fff;
 }
 
 /*cookie options styles*/
 #cookie-notification .cookie-options {
-    width: 60%;
+    width: 1024px;
     min-width: 300px;
+    min-height: 500px;
     margin: auto;
-    padding: 40px 0 100px;
+    padding: 40px 0 40px;
     color: #fff;
     position: relative;
     display: none;
@@ -46,11 +50,13 @@
     display: inline-block;
     width: 70%;
     vertical-align: top;
+    padding: 0 20px;
 }
 
 #cookie-notification .nav-item {
     display: block;
     padding: 10px 20px;
+    min-width: 150px;
 }
 
 #cookie-notification .nav-item.selected {
@@ -79,16 +85,14 @@
 /*button styles*/
 #cookie-notification .actions {
     width: 600px;
-    position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto 40px;
     text-align: center;
 }
 
 #cookie-notification .actions .button {
     color: #fff;
-    margin: 0px 5px 40px;
+    margin: 0px 20px;
 }
 
 #cookie-notification .actions .button:after {
@@ -117,4 +121,37 @@
     right: 10px;
     color: #fff;
     cursor: pointer;
+}
+
+/*responsive styles*/
+@media only screen and (max-width: 1024px) {
+    #cookie-notification .cookie-options {
+        width: 100%;
+    }
+
+    #cookie-notification .options-nav {
+        display: block;
+        width: 90%;
+        margin: 0 auto 40px;
+    }
+
+    #cookie-notification .options-content {
+        display: block;
+        width: 90%;
+        margin: auto;
+        padding: 0;
+    }
+
+    #cookie-notification .actions {
+        width: 300px;
+    }
+
+    #cookie-notification .actions .button {
+        display: block;
+        width: 90%;
+    }
+
+    #cookie-notification .actions .options {
+        display: none;
+    }
 }
