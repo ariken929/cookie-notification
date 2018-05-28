@@ -22,7 +22,14 @@
                     <h3>Cookies Used</h3>
                     <ul class="cookie-list">
                         <% loop $EssentialCookies %>
-                            <li><a href="$Link" target="_blank">$Title</a></li>
+                            <% if $Link %>
+                                <li><a href="$Link" target="_blank">$Title</a></li>
+                            <% else %>
+                                <li <% if $Description %>class="tooltip"<% end_if %>>
+                                    $Title
+                                    <% if $Description %><span class="tooltiptext">$Description</span><% end_if %>
+                                </li>
+                            <% end_if %>
                         <% end_loop %>
                     </ul>
                 </div>
@@ -34,9 +41,16 @@
                     </div>
                     <h3>Cookies Used</h3>
                     <ul class="cookie-list">
-                        <% loop $OptionalCookies %>
+                    <% loop $OptionalCookies %>
+                        <% if $Link %>
                             <li><a href="$Link" target="_blank">$Title</a></li>
-                        <% end_loop %>
+                        <% else %>
+                            <li <% if $Description %>class="tooltip"<% end_if %>>
+                                $Title
+                                <% if $Description %><span class="tooltiptext">$Description</span><% end_if %>
+                            </li>
+                        <% end_if %>
+                    <% end_loop %>
                     </ul>
                 </div>
             <% end_if %>
