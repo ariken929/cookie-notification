@@ -74,23 +74,27 @@ class CookieNotificationExtension extends Extension
 
     public function acceptAll()
     {
-        Session::set('cookie-all-accepted', true);
+        /*Session::set('cookie-all-accepted', true);*/
+        Cookie::set('cookie-all-accepted', true,90);
         $this->InjectScripts();
     }
 
     public function acceptEssential()
     {
-        Session::set('cookie-essential-accepted', true);
+        /*Session::set('cookie-essential-accepted', true);*/
+        Cookie::set('cookie-essential-accepted', true,90);
     }
 
     public function AllAccepted()
     {
-        return Session::get('cookie-all-accepted');
+        /*return Session::get('cookie-all-accepted');*/
+        return Cookie::get('cookie-all-accepted');
     }
 
     public function EssentialAccepted()
     {
-        return Session::get('cookie-essential-accepted');
+        /*return Session::get('cookie-essential-accepted');*/
+        return Cookie::get('cookie-essential-accepted');
     }
 
     public function EssentialCookies()
